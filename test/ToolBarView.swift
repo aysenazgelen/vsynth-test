@@ -9,40 +9,54 @@ import SwiftUI
 
 public struct ToolBarView: View {
     public var body: some View {
-        HStack {
-            Button(action: {
-                // Action for Add
-            }) {
-                Image(systemName: "plus")
-                Text("Add")
+        ZStack {
+            // Left-aligned edit & cut
+            HStack(spacing: 10) {
+                Button(action: {
+                    // Edit
+                }) {
+                    Image(systemName: "pencil")
+                }
+
+                Button(action: {
+                    // Delete
+                }) {
+                    Image(systemName: "scissors")
+                }
+
+                Spacer()
             }
 
-            Spacer()
+            // Centered playback controls
+            HStack(spacing: 10) {
+                Button(action: {
+                    // Go to beginning
+                }) {
+                    Image(systemName: "backward.end.fill")
+                }
 
-            Button(action: {
-                // Action for Edit
-            }) {
-                Image(systemName: "pencil")
-                Text("Edit")
-            }
+                Button(action: {
+                    // Play
+                }) {
+                    Image(systemName: "play.fill")
+                }
 
-            Spacer()
-
-            Button(action: {
-                // Action for Delete
-            }) {
-                Image(systemName: "trash")
-                Text("Delete")
+                Button(action: {
+                    // Go to end
+                }) {
+                    Image(systemName: "forward.end.fill")
+                }
             }
         }
-        .padding()
-        .background(Color.gray.opacity(0.1)) // SwiftUI-native
+        .padding(.vertical, 3)
+        .padding(.horizontal, 10)
+        .frame(height: 40)
+        .background(Color.gray.opacity(0.1))
         .overlay(
             Rectangle()
                 .frame(height: 0.5)
                 .foregroundColor(.gray),
             alignment: .bottom
         )
-        
     }
 }
